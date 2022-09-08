@@ -14,8 +14,8 @@ class DBClient {
         this.client = false;
       } else {
         this.client = db.db(dB);
-        this.client.createcollection('users');
-        this.client.createcollection('files');
+        this.client.createCollection('users');
+        this.client.createCollection('files');
       }
     });
   }
@@ -26,12 +26,12 @@ class DBClient {
   }
 
   async nbUsers() {
-    const collecUsers = await this.client.collection('users').estimatedDocumentCount({});
+    const collecUsers = await this.client.collection('users').countDocuments();
     return collecUsers;
   }
 
   async nbFiles() {
-    const collecFiles = await this.client.collection('files').estimatedDocumentCount({});
+    const collecFiles = await this.client.collection('files').countDocuments();
     return collecFiles;
   }
 }
