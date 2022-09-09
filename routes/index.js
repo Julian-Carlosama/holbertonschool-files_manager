@@ -7,8 +7,8 @@ const router = (app) => {
   app.use(express.json());
   app.use('/', endP);
 
-  endP.get('status', ((request, response) => AppController.getStatus(request, response)));
-  endP.get('status', ((request, response) => AppController.getStatus(request, response)));
+  endP.get('/status', ((req, res) => AppController.getStatus(req, res)));
+  endP.get('/stats', ((req, res) => AppController.getStats(req, res)));
 };
 
-module.exports = router;
+export default router;
